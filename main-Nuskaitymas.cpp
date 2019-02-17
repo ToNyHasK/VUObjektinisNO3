@@ -1,3 +1,5 @@
+//Naudoju vektorius, taip patogiau ir lyg uzd parasyta taip... reikia naudoti vektoriu. vektoriai = love;0
+//Reikia pataisyt vardo ir pavardes isvedima, also kazkodel blogai isveda vidurki pazymiu, reik ir ta sutvarkyt
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -123,65 +125,69 @@ double galutinioV()
 }
 
 };
-void display(studentas *s, int temporary);
+void display(vector<string> virtuA, vector <studentas> st);
+//main funkcija, skaito,prideda..
 int main()
 {
-cout << "Kiek noresite ivesti studentu ?"<< endl;
-            int stud;
-            cin >> stud;
-             while(cin.fail()) {
-        cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-        cout << "Neteisingai ivedete, veskite dar karta! ";
-        cin >> stud;
+    ifstream fd ("studentai.txt");
+    //Tikrinam, ar gezistuoja failas
+
+        if (fd.fail()) {
+            cout << "<studentai.txt> neagzistuoja, prasome sukurti faila";
+            return 1;
     }
 
-    cout << endl;
-    studentas *s = new studentas[stud];
 
-for (int i=0; i<stud; i++){
-    s[i].data();
+
+
+    //Pradedam skaitymo proceca
+    vector<string>virtuA;
+    vector<studentas>st;
+    string virtuB;
+    string virtuC;
+    getline(fd, virtuB);
+
+    //Tikrinam eilutes
+    if (virtuB.empty()) {
+        cout << "Pirmoje eiluteja nieko nera! ";
+        return 2;
+    }
+
+    istringstream onLine(virtuB);
+
+                while (onLine >> virtuC) {
+                    virtuA.push_back(virtuC);
+                        }
+    const int visuNd = virtuA.size()-3;
+     while (getline(fd, virtuB)) {
+        istringstream onLine(virtuB);
+        studentas s;
+        onLine >> s.firstName >> s.secondName;
+            for (int i = 0; i < visuNd; i++) {
+            double notDB;
+            onLine >> notDB;
+            s.nd.push_back(notDB);
+        }
+        onLine >> s.egz;
+        st.push_back(s);
+     }
+display(virtuA, st);
+cin.get();
+return 0;
 }
-display(s, stud);
- return 0;
-}
-void display(studentas *s, int temporary)
+//atspauzdint fukcija
+void display (vector<string> virtuA, vector <studentas> st)
 {
- //Displaying information
+    //pirma reikia issortint, pagal vardus (arba) pavardes, kad eitu is eiles
 
-cout << "Jeigu norite skaiciuote galutini su vidurkiu spauskitine 0, jeigu su mediana, spauskite 1: "<< endl;
-int tmp=0;
-cin >> tmp;
-if (tmp == 0){
-        //Su vidurkiu
-        cout << "Jusu pateikta informacija(pasirinkote skaiciuoti su vidurkiu): " << endl;
-
-        cout << "Pavarde            Vardas          Galutinis(Vid.)" << endl;
-
-
-        cout <<"------------------------------------------------------------"<<endl;
-
-
-    for (int i = 0; i <temporary; ++i)
-{
-        cout << s[i].firstName << "         " << s[i].secondName << fixed<< setprecision(2) <<"         "<< s[i].galutinioV() << endl;
-}
-}
-//Su mediana
-else {
-    cout << "Jusu pateikta informacija(pasirinkote skaiciuoti su mediana): " << endl;
-
-        cout << "Pavarde            Vardas          Galutinis(Med.)" << endl;
-
-
-        cout <<"------------------------------------------------------------"<<endl;
+    sort(st.begin(), st.end() , [](studentas kimo, studentas kima){return kimo.firstName<kima.firstName;});
+    cout << left <<setw(10)<< virtuA[0] <<setw(10)<<virtuA[1]<<setw(20)<<"Galutinis(Vid.)"<< "Galutinis(Med.)"<<endl;
+    cout << "-------------------------------------------------"<< endl;
+    for (auto &s : st) {
+        cout << fixed << setprecision(2) << left << setw(10)<< s.firstName <<  setw(10) <<s.secondName <<  setw(20) << s.galutinioV() << s.galutinioM() << endl;
+    }
 
 
 
-    for (int i = 0; i < temporary; ++i)
-{
-        cout << s[i].firstName << "         " << s[i].secondName << fixed<< setprecision(2) <<"         "<< s[i].galutinioM() << endl;
-}
-}
 }
 
