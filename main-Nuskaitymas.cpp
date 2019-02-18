@@ -1,193 +1,237 @@
-//Naudoju vektorius, taip patogiau ir lyg uzd parasyta taip... reikia naudoti vektoriu. vektoriai = love;0
-//Reikia pataisyt vardo ir pavardes isvedima, also kazkodel blogai isveda vidurki pazymiu, reik ir ta sutvarkyt
 #include <iostream>
 #include <iomanip>
 #include <vector>
 #include <algorithm>
 #include <random>
 #include <sstream>
-#include <time.h>
 #include <random>
 #include <string>
 #include <fstream>
 #include <cmath>
-#include <ctime>
 
 using namespace std;
-struct studentas{
 
 
-string firstName;
-string secondName;
+struct studentas {
+    string firstName;
+    string secondName;
 
-vector<double> nd;
-double visiNd = 0;
-double egz = 0;
+    vector<double> nd;
 
-
-
-void data()
-{
-    //Storing information
-    cout << "Studento vardas: ";
-    cin >> firstName;
-    cout << endl;
-    cout << "Studento pavarde: ";
-    cin >> secondName;
-    cout << endl;
-    //
-    cout << "Ar noresite sugeneruoti random pazymius ir egzamino balus? Random - spauskite 1. Ivesties budu - spauskite 0: "<<endl;
-            int b;
-            cin >> b;
-
-            if (b == 1)
-            {
-                randomNumbers();
-
-            }
-            else {
-                numberInput();
-                cout << "Iveskite studento egzamino rezultata: "<< endl;
-                cin >> egz;
-            }
+    double visiNd = 0;
+    double egz = 0;
 
 
+void readFile (int &index, vector<studentas> &s);
 
+//Storing information
 
-}
-// Generuoja random skaicius
-void randomNumbers()
-{
-    cout << "Iveskite kiek norite sugeneruoti skaiciu!: "<< endl;
-    cin >> visiNd;
-    while (cin.fail()) {
-       cout << "Blogas irasymas, bandykite dar karta: "<<endl;
-       cin.clear();
-       cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-       cin >> visiNd;
-   }
-   nd.reserve(visiNd);
-   const unsigned int seed = time(0);
-   mt19937_64 rng(seed);
-   uniform_real_distribution<double> random(1, 10);
-   for (int i = 0; i<visiNd; i++)
-   {
-       nd.push_back((int)random(rng));
-   }
-egz = (int)random(rng);
+    void data() {
+        cout << "Studento vardas: ";
+        cin >> firstName;
+        cout << "\n";
+        cout << "Studento pavarde: ";
+        cin >> secondName;
+        cout << "\n";
 
-}
+        cout << "Ar noresite sugeneruoti random pazymius ir egzamino balus? Random - spauskite 1. Ivesties budu - spauskite 0: \n";
+        int ivestiesRadom;
+        cin >> ivestiesRadom;
+
+        while (cin.fail()) {
+            cout << "Blogas irasymas, bandykite dar karta: \n";
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin >> ivestiesRadom;
+        }
+
+        if (ivestiesRadom == 1) {
+            randomNumbers();
+        }
+
+        else {
+            numberInput();
+            cout << "Iveskite studento egzamino rezultata: \n";
+            cin >> egz;
+        }
+    }
+
+//Generuoja random skaicius
+
+    void randomNumbers() {
+        cout << "Iveskite kiek norite sugeneruoti skaiciu!: \n";
+        cin >> visiNd;
+
+        while (cin.fail()){
+            cout << "Blogas irasymas, bandykite dar karta: \n";
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin >> visiNd;
+
+        }
+
+        nd.reserve(visiNd);
+
+        const unsigned int seed = time(0);
+        mt19937_64 rng(seed);
+        uniform_real_distribution<double> random(1, 10);
+
+        for (int i = 0; i<visiNd; i++) {
+            nd.push_back(static_cast<int>(random(rng)));
+
+        }
+
+        egz = static_cast<int>(random(rng));
+    }
+
 //Rankiniu budu turi suvest nd ir egz
-void numberInput()
-{
-    cout << "Iveskit namu darbu pazymius, norint pabaigti, iveskite ne skaiciu! "<<endl;
+
+    void numberInput() {
+        cout << "Iveskit namu darbu pazymius, norint pabaigti, iveskite ne skaiciu! \n";
+
         int skc;
-    while (cin >> skc)
-    {
-        if (!(skc >= 1 && skc <= 10)) {
-                cout << "Pazymys turi buti tarp 1 ir 10! " << endl;
-                    continue;
-    }
-    nd.push_back(skc);
 
-}
-visiNd  = nd.size();
-cin.clear();
-cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-}
+        while (cin >> skc) {
+            if (!(skc >= 1 && skc <= 10)){
+            cout << "Pazymys turi buti tarp 1 ir 10! \n";
+            continue;
+            }
+            nd.push_back(skc);
+        }
+
+        visiNd  = nd.size();
+
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+    }
+
 //Vidutinio skaiciavimas
-double vid ()
-{
-    double vidutinis = 0;
-    for (int i = 0; i < visiNd; i++)
-    {
-        vidutinis = vidutinis + nd[i];
-    }
-    vidutinis = vidutinis / visiNd;
-    return vidutinis;
 
+    double vid () {
+        double vidutinis = 0;
+
+        for (auto &viens : nd) {
+            vidutinis += viens;
+        }
+
+        vidutinis /= nd.size();
+
+        return vidutinis;
 }
 
 //Medianos skaiciavimas
-double median (vector<double>set)
-{
-    sort(set.begin(), set.end());
 
-return (set.size()% 2 == 0 ? (set[set.size()/2] + set[(set.size() / 2 ) - 1]) / 2 : set[set.size() / 2]);
-}
-double galutinioM()
-{
-    return 0.4 * median(nd) + 0.6 * egz;
-}
-double galutinioV()
-{
-    return 0.4 * vid() + 0.6 * egz;
-}
+    double median (vector<double>set) {
+        sort(set.begin(), set.end());
+        return (set.size()% 2 == 0 ? (set[set.size()/2] + set[(set.size() / 2 ) - 1]) / 2 : set[set.size() / 2]);
+    }
 
+    double galutinioM() {
+        return 0.4 * median(nd) + 0.6 * egz;
+    }
+
+    double galutinioV() {
+        return 0.4 * vid() + 0.6 * egz;
+    }
 };
-void display(vector<string> virtuA, vector <studentas> st);
-//main funkcija, skaito,prideda..
+
+void readFile (int &index, vector<studentas> &s);
+void display(vector<studentas> s, int index);
+bool mycomp(const studentas & s1, const studentas & s2);
+void sortSbyName(vector<studentas> s);
+
 int main()
 {
-    ifstream fd ("studentai.txt");
-    //Tikrinam, ar gezistuoja failas
+    vector<studentas> s;
+    cout << "Ar norite nuskaityti studentus is failo, ar ivesti pats? 1 - jei pats, 0 - jei is failo\n";
 
-        if (fd.fail()) {
-            cout << "<studentai.txt> neagzistuoja, prasome sukurti faila";
-            return 1;
-    }
+    int pasirinkimas;
+    cin >> pasirinkimas;
 
+    int index = 0;
 
-
-
-    //Pradedam skaitymo proceca
-    vector<string>virtuA;
-    vector<studentas>st;
-    string virtuB;
-    string virtuC;
-    getline(fd, virtuB);
-
-    //Tikrinam eilutes
-    if (virtuB.empty()) {
-        cout << "Pirmoje eiluteja nieko nera! ";
-        return 2;
-    }
-
-    istringstream onLine(virtuB);
-
-                while (onLine >> virtuC) {
-                    virtuA.push_back(virtuC);
-                        }
-    const int visuNd = virtuA.size()-3;
-     while (getline(fd, virtuB)) {
-        istringstream onLine(virtuB);
-        studentas s;
-        onLine >> s.firstName >> s.secondName;
-            for (int i = 0; i < visuNd; i++) {
-            double notDB;
-            onLine >> notDB;
-            s.nd.push_back(notDB);
+    if (pasirinkimas == 0) {
+        readFile(index, s);
+    } else if (pasirinkimas == 1) {
+        cout << "Kiek noresite ivesti studentu ?" << endl;
+        int stud;
+        cin >> stud;
+        s.resize(stud);
+        while(cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Neteisingai ivedete, veskite dar karta! ";
+            cin >> stud;
         }
-        onLine >> s.egz;
-        st.push_back(s);
-     }
-display(virtuA, st);
-cin.get();
-return 0;
-}
-//atspauzdint fukcija
-void display (vector<string> virtuA, vector <studentas> st)
-{
-    //pirma reikia issortint, pagal vardus (arba) pavardes, kad eitu is eiles
 
-    sort(st.begin(), st.end() , [](studentas kimo, studentas kima){return kimo.firstName<kima.firstName;});
-    cout << left <<setw(10)<< virtuA[0] <<setw(10)<<virtuA[1]<<setw(20)<<"Galutinis(Vid.)"<< "Galutinis(Med.)"<<endl;
-    cout << "-------------------------------------------------"<< endl;
-    for (auto &s : st) {
-        cout << fixed << setprecision(2) << left << setw(10)<< s.firstName <<  setw(10) <<s.secondName <<  setw(20) << s.galutinioV() << s.galutinioM() << endl;
+        index = stud;
+
+        cout << "\n";
+
+        for (int i = 0; i < stud; i++) {
+
+            s[i].data();
+        }
     }
 
+    sortSbyName(s);
+    display(s, index);
+
+    return 0;
+}
+
+//skaito is failo
+//sitos fukcjos ikvepimu tapo Zygimanto Auguno funkcija, labai padejo.
+void readFile (int &index, vector<studentas> &s) {
+
+    string line;
+
+    int ndVisu;
+
+    ifstream file_("studentai.txt");
+
+    getline(file_, line); //pirmas
+
+    while (getline(file_, line)) {
+        istringstream pirmi(line);
+        s.push_back(studentas());
+        pirmi >> s[index].firstName;
+        pirmi >> s[index].secondName;
+
+        while (pirmi) {
+            pirmi >> ndVisu;
+            s[index].nd.push_back(ndVisu);
+        }
+
+        s[index].egz = s[index].nd.back();
+        s[index].nd.pop_back();
+        index++;
+    }
+
+}
+
+//Sortina studentus
+bool mycomp(const studentas & s1, const studentas & s2) {
+    return (s1.firstName < s2.firstName);
+}
+void sortSbyName(vector<studentas> s){
+    sort(s.begin(), s.end(), mycomp);
+}
 
 
+void display(vector<studentas> s, int index)
+{
+ //Displaying information
+
+        cout << "Jusu pateikta informacija: \n";
+
+        cout << "Vardas"<<setw(10)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<< setw(20)<<"Galutinis(Med.) \n";
+
+        cout <<"-------------------------------------------------------------------------------------\n";
+
+
+    for (int i = 0; i < index; ++i) {
+        cout << s[i].firstName << setw(10) << s[i].secondName << setw(10) << fixed<< setprecision(2) << s[i].galutinioV() <<setw(20)<<s[i].galutinioM()<<"\n";
+    }
 }
 
