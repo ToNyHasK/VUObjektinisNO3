@@ -7,10 +7,9 @@
 #include <random>
 #include <string>
 #include <fstream>
-#include <cmath>
 
 using namespace std;
-
+void checkInput(int &input);
 
 struct studentas {
     string firstName;
@@ -22,7 +21,7 @@ struct studentas {
     double egz = 0;
 
 
-void readFile (int &index, vector<studentas> &s);
+    void readFile (int &index, vector<studentas> &s);
 
 //Storing information
 
@@ -30,30 +29,29 @@ void readFile (int &index, vector<studentas> &s);
         cout << "Studento vardas: ";
         cin >> firstName;
         cout << "\n";
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
         cout << "Studento pavarde: ";
         cin >> secondName;
         cout << "\n";
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         cout << "Ar noresite sugeneruoti random pazymius ir egzamino balus? Random - spauskite 1. Ivesties budu - spauskite 0: \n";
         int ivestiesRadom;
         cin >> ivestiesRadom;
 
-        while (cin.fail()) {
-            cout << "Blogas irasymas, bandykite dar karta: \n";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cin >> ivestiesRadom;
-        }
+        checkInput(ivestiesRadom);
 
         if (ivestiesRadom == 1) {
             randomNumbers();
-        }
-
-        else {
+        }else {
             numberInput();
             cout << "Iveskite studento egzamino rezultata: \n";
             cin >> egz;
         }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
 //Generuoja random skaicius
@@ -67,7 +65,6 @@ void readFile (int &index, vector<studentas> &s);
             cin.clear();
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             cin >> visiNd;
-
         }
 
         nd.reserve(visiNd);
@@ -78,7 +75,6 @@ void readFile (int &index, vector<studentas> &s);
 
         for (int i = 0; i<visiNd; i++) {
             nd.push_back(static_cast<int>(random(rng)));
-
         }
 
         egz = static_cast<int>(random(rng));
@@ -93,8 +89,8 @@ void readFile (int &index, vector<studentas> &s);
 
         while (cin >> skc) {
             if (!(skc >= 1 && skc <= 10)){
-            cout << "Pazymys turi buti tarp 1 ir 10! \n";
-            continue;
+                cout << "Pazymys turi buti tarp 1 ir 10! \n";
+                continue;
             }
             nd.push_back(skc);
         }
@@ -102,7 +98,7 @@ void readFile (int &index, vector<studentas> &s);
         visiNd  = nd.size();
 
         cin.clear();
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
 //Vidutinio skaiciavimas
@@ -138,7 +134,7 @@ void readFile (int &index, vector<studentas> &s);
 void readFile (int &index, vector<studentas> &s);
 void display(vector<studentas> s, int index);
 bool mycomp(const studentas & s1, const studentas & s2);
-void sortSbyName(vector<studentas> s);
+void sortSbyName(vector<studentas> &s);
 
 int main()
 {
@@ -147,6 +143,8 @@ int main()
 
     int pasirinkimas;
     cin >> pasirinkimas;
+    //tikrinimas
+    checkInput(pasirinkimas);
 
     int index = 0;
 
@@ -156,30 +154,41 @@ int main()
         cout << "Kiek noresite ivesti studentu ?" << endl;
         int stud;
         cin >> stud;
-        s.resize(stud);
-        while(cin.fail()) {
+        while(cin.fail() || stud > 100000) {
             cin.clear();
             cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
             cout << "Neteisingai ivedete, veskite dar karta! ";
             cin >> stud;
         }
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 
+        s.resize(stud);
         index = stud;
 
         cout << "\n";
 
         for (int i = 0; i < stud; i++) {
-
             s[i].data();
         }
+
     }
+
 
     sortSbyName(s);
     display(s, index);
 
     return 0;
 }
+void checkInput(int &input) {
 
+    while (cin.fail() || (input !=1 && input !=0)){
+            cout << "Blogas irasymas, bandykite dar karta: \n";
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin >> input;
+    }
+
+}
 //skaito is failo
 //sitos fukcjos ikvepimu tapo Zygimanto Auguno funkcija, labai padejo.
 void readFile (int &index, vector<studentas> &s) {
@@ -214,7 +223,7 @@ void readFile (int &index, vector<studentas> &s) {
 bool mycomp(const studentas & s1, const studentas & s2) {
     return (s1.firstName < s2.firstName);
 }
-void sortSbyName(vector<studentas> s){
+void sortSbyName(vector<studentas> & s){
     sort(s.begin(), s.end(), mycomp);
 }
 
@@ -225,13 +234,12 @@ void display(vector<studentas> s, int index)
 
         cout << "Jusu pateikta informacija: \n";
 
-        cout << "Vardas"<<setw(10)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<< setw(20)<<"Galutinis(Med.) \n";
+        cout << "Vardas"<<setw(15)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<< setw(20)<<"Galutinis(Med.) \n";
 
         cout <<"-------------------------------------------------------------------------------------\n";
 
 
     for (int i = 0; i < index; ++i) {
-        cout << s[i].firstName << setw(10) << s[i].secondName << setw(10) << fixed<< setprecision(2) << s[i].galutinioV() <<setw(20)<<s[i].galutinioM()<<"\n";
+        cout << s[i].firstName << setw(15) << s[i].secondName << setw(20) << fixed<< setprecision(2) << s[i].galutinioV() <<setw(20)<<s[i].galutinioM()<<"\n";
     }
 }
-
