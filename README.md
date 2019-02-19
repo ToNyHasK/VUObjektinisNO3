@@ -39,4 +39,4 @@
 
 ***Pridėta***
 
--Pirminė programos versija
+- Pirminė programos versija
