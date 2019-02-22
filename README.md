@@ -11,6 +11,16 @@
 
 ## Versijų istorija (changelog)
 
+### [v0.3](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.3) - (2019-02-22)
+
+***Pridėta***
+
+- **Headers** files
+
+**Koreguota**
+
+- Didzioji dalis funkcijų perkelta į headers failus
+
 ### [v0.2.2](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.2.2) - (2019-02-19)
 
 **Koreguota**
