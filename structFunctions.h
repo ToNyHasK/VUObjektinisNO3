@@ -1,15 +1,10 @@
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <algorithm>
-#include <random>
-#include <sstream>
-#include <random>
-#include <string>
-#include <fstream>
+#ifndef STRUCT_FUNCTIONS_H
+#define STRUCT_FUNCTIONS_H
+#include "checkInput.h"
 
 using namespace std;
-void checkInput(int &input);
+
+//studento struktura, funkcijos: display, readfile, sortbyname, mycomp
 
 struct studentas {
     string firstName;
@@ -49,6 +44,12 @@ struct studentas {
             numberInput();
             cout << "Iveskite studento egzamino rezultata: \n";
             cin >> egz;
+
+            while (egz > 10 || egz < 1){
+                cout << "Egzamino balas turi buti tarp 1 ir 10! \n";
+                cin >> egz;
+            }
+
         }
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -131,66 +132,6 @@ struct studentas {
     }
 };
 
-void readFile (int &index, vector<studentas> &s);
-void display(vector<studentas> s, int index);
-bool mycomp(const studentas & s1, const studentas & s2);
-void sortSbyName(vector<studentas> &s);
-
-int main()
-{
-    vector<studentas> s;
-    cout << "Ar norite nuskaityti studentus is failo, ar ivesti pats? 1 - jei pats, 0 - jei is failo\n";
-
-    int pasirinkimas;
-    cin >> pasirinkimas;
-    //tikrinimas
-    checkInput(pasirinkimas);
-
-    int index = 0;
-
-    if (pasirinkimas == 0) {
-        readFile(index, s);
-    } else if (pasirinkimas == 1) {
-        cout << "Kiek noresite ivesti studentu ?" << endl;
-        int stud;
-        cin >> stud;
-        while(cin.fail() || stud > 100000) {
-            cin.clear();
-            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-            cout << "Neteisingai ivedete, veskite dar karta! ";
-            cin >> stud;
-        }
-        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-
-        s.resize(stud);
-        index = stud;
-
-        cout << "\n";
-
-        for (int i = 0; i < stud; i++) {
-            s[i].data();
-        }
-
-    }
-
-
-    sortSbyName(s);
-    display(s, index);
-
-    return 0;
-}
-void checkInput(int &input) {
-
-    while (cin.fail() || (input !=1 && input !=0)){
-            cout << "Blogas irasymas, bandykite dar karta: \n";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            cin >> input;
-    }
-
-}
-//skaito is failo
-//sitos fukcjos ikvepimu tapo Zygimanto Auguno funkcija, labai padejo.
 void readFile (int &index, vector<studentas> &s) {
 
     string line;
@@ -243,3 +184,5 @@ void display(vector<studentas> s, int index)
         cout << s[i].firstName << setw(15) << s[i].secondName << setw(20) << fixed<< setprecision(2) << s[i].galutinioV() <<setw(20)<<s[i].galutinioM()<<"\n";
     }
 }
+
+#endif // STRUCT_FUNCTIONS_H
