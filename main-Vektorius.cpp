@@ -1,24 +1,31 @@
-#ifndef STRUCT_FUNCTIONS_H
-#define STRUCT_FUNCTIONS_H
-#include "checkInput.h"
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <algorithm>
+#include <random>
+#include <sstream>
+#include <time.h>
+#include <random>
+#include <string>
+#include <fstream>
+#include <cmath>
+#include <ctime>
 
 using namespace std;
 
-//studento struktura, funkcijos: display, readfile, sortbyname, mycomp
+void checkInput(int &input);
 
-struct studentas {
-    string firstName;
-    string secondName;
-
-    vector<double> nd;
-
-    double visiNd = 0;
-    double egz = 0;
+struct studentas{
 
 
-    void readFile (int &index, vector<studentas> &s);
+string firstName;
+string secondName;
 
-//Storing information
+vector<double> nd;
+double visiNd = 0;
+double egz = 0;
+
+
 
     void data() {
         cout << "Studento vardas: ";
@@ -44,12 +51,6 @@ struct studentas {
             numberInput();
             cout << "Iveskite studento egzamino rezultata: \n";
             cin >> egz;
-
-            while (egz > 10 || egz < 1){
-                cout << "Egzamino balas turi buti tarp 1 ir 10! \n";
-                cin >> egz;
-            }
-
         }
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -80,6 +81,7 @@ struct studentas {
 
         egz = static_cast<int>(random(rng));
     }
+
 
 //Rankiniu budu turi suvest nd ir egz
 
@@ -132,57 +134,83 @@ struct studentas {
     }
 };
 
-void readFile (int &index, vector<studentas> &s) {
+void display(vector<studentas> s, int index);
 
-    string line;
+int main()
+{
+    vector<studentas> s;
+    int index = 0;
+    cout << "Kiek noresite ivesti studentu ?" << endl;
+    int stud;
+    cin >> stud;
+    while(cin.fail() || stud > 100000) {
+        cin.clear();
+        cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
+        cout << "Neteisingai ivedete, veskite dar karta! ";
+        cin >> stud;
+    }
+    s.resize(stud);
+    index = stud;
 
-    int ndVisu;
+    cout << "\n";
 
-    ifstream file_("studentai.txt");
+    for (int i = 0; i < stud; i++) {
+        s[i].data();
+    }
 
-    getline(file_, line); //pirmas
+    display(s, stud);
 
-    while (getline(file_, line)) {
-        istringstream pirmi(line);
-        s.push_back(studentas());
-        pirmi >> s[index].firstName;
-        pirmi >> s[index].secondName;
+ return 0;
+}
 
-        while (pirmi) {
-            pirmi >> ndVisu;
-            s[index].nd.push_back(ndVisu);
-        }
+void checkInput(int &input) {
 
-        s[index].egz = s[index].nd.back();
-        s[index].nd.pop_back();
-        index++;
+    while (cin.fail() || (input !=1 && input !=0)){
+            cout << "Blogas irasymas, bandykite dar karta: \n";
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin >> input;
     }
 
 }
-
-//Sortina studentus
-bool mycomp(const studentas & s1, const studentas & s2) {
-    return (s1.firstName < s2.firstName);
-}
-void sortSbyName(vector<studentas> & s){
-    sort(s.begin(), s.end(), mycomp);
-}
-
 
 void display(vector<studentas> s, int index)
 {
  //Displaying information
 
-        cout << "Jusu pateikta informacija: \n";
+    cout << "Ar norite skaiciuoti galsutini su mediana, ar su vidurkiu? Su vidurkiu, spauskite 1, su mediana spauskite 0 \n";
+    int pasirinkimas = 0;
+    cin >> pasirinkimas;
 
-        cout << "Vardas"<<setw(15)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<< setw(20)<<"Galutinis(Med.) \n";
+    //tikrinimas
+    checkInput(pasirinkimas);
+
+    if (pasirinkimas == 1){
+
+        cout << "Jusu pateikta informacija su VIDURKIU: \n";
+
+        cout << "Vardas"<<setw(15)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)\n";
 
         cout <<"-------------------------------------------------------------------------------------\n";
 
 
     for (int i = 0; i < index; ++i) {
-        cout << s[i].firstName << setw(15) << s[i].secondName << setw(20) << fixed<< setprecision(2) << s[i].galutinioV() <<setw(20)<<s[i].galutinioM()<<"\n";
+        cout << s[i].firstName << setw(15) << s[i].secondName << setw(20) << fixed<< setprecision(2) << s[i].galutinioV() <<"\n";
+    }
+    }
+    else {
+
+        cout << "Jusu pateikta informacija su MEDIANA: \n";
+
+        cout << "Vardas"<<setw(15)<<"Pavarde"<<setw(20)<< "Galutinis(Med.) \n";
+
+        cout <<"-------------------------------------------------------------------------------------\n";
+
+
+    for (int i = 0; i < index; ++i) {
+        cout << s[i].firstName << setw(15) << s[i].secondName << setw(20) << fixed<< setprecision(2) << s[i].galutinioM() <<"\n";
+    }
     }
 }
 
-#endif // STRUCT_FUNCTIONS_H
+
