@@ -11,6 +11,13 @@
 
 ## Versijų istorija (changelog)
 
+### [v0.4](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.4) - (2019-03-01)
+
+**Apie**
+
+- Generuojami penki failai, su **random** sugeneruotais studentų balais
+- Sukuriami dar du failai (viename faile sudedami pažymiai >5, kitame <5)
+- Taip pat skaiciuojamas programos veikimo laikas ir kiekvieno failo sukūrimo laikas
 
 ### [v0.1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.1.1) - (2019-02-25)
 
