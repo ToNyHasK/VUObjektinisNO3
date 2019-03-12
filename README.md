@@ -19,6 +19,16 @@
 - Sukuriami dar du failai (viename faile sudedami pažymiai >5, kitame <5)
 - Taip pat skaiciuojamas programos veikimo laikas ir kiekvieno failo sukūrimo laikas
 
+**Laikai**
+
+- Pirmo failo: 0.000681 s
+- Antro failo: 0.00798 s
+- Trečio failo: 0.032946 s
+- Ketvirto failo: 0.249309 s
+- Penkto failo: 2.82796 s
+- Visos programos: 6.97499 s
+
+
 ### [v0.1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.1.1) - (2019-02-25)
 
 **Koreguota**
