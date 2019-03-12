@@ -11,6 +11,18 @@
 
 ## Versijų istorija (changelog)
 
+### [v0.5](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5) - (2019-03-12)
+
+**Laikai**
+
+- Su **vector**: 6.97499 s
+- Su **deque**: 6.658 s
+- Su **list**: 5.58647 s
+
+**Pakeista**
+
+- Ikelta versija yra su **link** ir **iteratoriais**
+
 ### [v0.4](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.4) - (2019-03-01)
 
 **Apie**
