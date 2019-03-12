@@ -8,6 +8,8 @@
 #include <string>
 #include <fstream>
 #include <chrono>
+#include <list>
+#include <deque>
 
 
 using namespace std;
@@ -83,7 +85,7 @@ void checkInput(int &input) {
 
 void createFiles(vector<double> &vargsiukaiV, vector<double> &protingiejiV, int &pasirinkimas, vector<double> &vargsiukaiM, vector<double> &protingiejiM) {
 
-    vector<studentas> s;
+    list<studentas> s;
     int visiStudentai = 1;
     int counter = 0;
 
@@ -98,8 +100,6 @@ void createFiles(vector<double> &vargsiukaiV, vector<double> &protingiejiV, int 
 
             for (int i = 1;  i <= 5; i++) {
 
-            auto start = std::chrono::high_resolution_clock::now();
-
         counter++;
         ofstream file;
         file.open ("studentai" + to_string(i) + ".txt");
@@ -112,25 +112,22 @@ void createFiles(vector<double> &vargsiukaiV, vector<double> &protingiejiV, int 
 
          visiStudentai *= 10;
          s.resize(visiStudentai);
+         int ccounter = 0;
 
+        for (list<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+            ccounter++;
+            (*it).randomNumbers(counter+ccounter);
 
-        for (int j = 0; j < visiStudentai; j++ ){
-
-            s[j].randomNumbers(counter+j);
-
-                if (s[j].galutinioV() >= 5){
-                    protingiejiV.push_back(s[j].galutinioV());
-                }else{vargsiukaiV.push_back(s[j].galutinioV());};
+                if ((*it).galutinioV() >= 5){
+                    protingiejiV.push_back((*it).galutinioV());
+                }else{vargsiukaiV.push_back((*it).galutinioV());};
 
             if (file.is_open()){
 
-                file << s[j].firstName << setw(20) << s[i].secondName << setw(20) << fixed << setprecision(2) << s[j].galutinioV() <<"\n";
+                file << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).galutinioV()<<"\n";
             }
         }
         file.close();
-        auto finish = std::chrono::high_resolution_clock::now();
-    chrono::duration<double> elapsed = finish - start;
-    cout << "Elapsed time of file" + to_string(i) + ": "<< elapsed.count() << " s\n";
         }
 
     }
@@ -151,24 +148,28 @@ void createFiles(vector<double> &vargsiukaiV, vector<double> &protingiejiV, int 
 
             visiStudentai *= 10;
             s.resize(visiStudentai);
+            int ccounter = 0;
 
-            for (int j = 0; j < visiStudentai; j++ ){
+            for (list<studentas>::iterator it = s.begin(); it != s.end(); ++it){
 
-                s[j].randomNumbers(counter+j);
+            ccounter++;
+            (*it).randomNumbers(counter+ccounter);
 
-                if (s[j].galutinioM() >= 5){
-                    protingiejiM.push_back(s[j].galutinioM());
-                }else{vargsiukaiM.push_back(s[j].galutinioM());}
+                if ((*it).galutinioM() >= 5){
+                    protingiejiM.push_back((*it).galutinioM());
+                } else{vargsiukaiM.push_back((*it).galutinioM());}
 
                 if (file.is_open()){
 
-                    file << s[j].firstName << setw(20) << s[i].secondName << setw(20) << fixed << setprecision(2) << s[j].galutinioM() << "\n";
+                    file << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).galutinioM() << "\n";
                 }
             }
+
             file.close();
         }
     }
 }
+
 
 void sortStud(vector<double> vargsiukaiV, vector<double> protingiejiV, int pasirinkimas, vector<double> vargsiukaiM, vector<double> protingiejiM) {
 
