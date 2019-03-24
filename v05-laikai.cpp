@@ -1,43 +1,64 @@
 #include "createFilesFunc.cpp"
 
-
-
-
-
 int main() {
 
     int pasirinkimas = 0;
     cout << "Ar norite, kad faile butu galutinis su vidurkiu, ar su mediana? Virdurkis, spauskite 1, mediana 0\n";
 
         cin >> pasirinkimas;
+        checkInput(pasirinkimas);
 
-    vector<studentas> a;
-    deque<studentas> b;
-    list<studentas> c;
-    vector<double> vargsiukaiV;
-    vector<double> protingiejiV;
-    vector<double> vargsiukaiM;
-    vector<double> protingiejiM;
+    vector <studentas> a;
+    deque <studentas> b;
+    list <studentas> c;
+
+    vector <studentas> protV;
+    deque <studentas> protD;
+    list <studentas> protL;
+
+    vector <studentas> vargV;
+    deque <studentas> vargD;
+    list <studentas> vargL;
+
+
+    int index = 0;
+
+    //Pirmoji strategija
+
+    createFiles(a, pasirinkimas);
     Timer t;
-    createFiles(a, vargsiukaiV, protingiejiV, pasirinkimas, vargsiukaiM, protingiejiM);
-    sortStud(vargsiukaiV, protingiejiV, pasirinkimas, vargsiukaiM, protingiejiM);
-    cout << "Elapsed time(whole program) with vector: " << t.elapsed() << " s\n";
-    vargsiukaiV.clear();
-    protingiejiV.clear();
-    vargsiukaiM.clear();
-    protingiejiM.clear();
+    readFile (index, a);
+    sortSbyName(a);
+    vargProt(a, vargV, protV);
+    sortStud(a, pasirinkimas, vargV, protV);
+    cout << "Elapsed time(whole program, first strategy) with vector: " << t.elapsed() << " s\n";
+    a.clear();
+    protV.clear();
+    vargV.clear();
+
+    //createFiles(b, pasirinkimas);
     t.reset();
-    createFiles(b, vargsiukaiV, protingiejiV, pasirinkimas, vargsiukaiM, protingiejiM);
-    sortStud(vargsiukaiV, protingiejiV, pasirinkimas, vargsiukaiM, protingiejiM);
-    cout << "Elapsed time(whole program) with deque: " << t.elapsed() << " s\n";
-    vargsiukaiV.clear();
-    protingiejiV.clear();
-    vargsiukaiM.clear();
-    protingiejiM.clear();
+    readFile (index, b);
+    sortSbyName(b);
+    vargProt(b, vargD, protD);
+    sortStud(b, pasirinkimas, vargD, protD);
+    cout << "Elapsed time(whole program, first strategy) with deque: " << t.elapsed() << " s\n";
+    b.clear();
+    protD.clear();
+    vargD.clear();
+
+    //createFiles(c, pasirinkimas);
     t.reset();
-    createFiles(c, vargsiukaiV, protingiejiV, pasirinkimas, vargsiukaiM, protingiejiM);
-    sortStud(vargsiukaiV, protingiejiV, pasirinkimas, vargsiukaiM, protingiejiM);
-    cout << "Elapsed time(whole program) with list: " << t.elapsed() << " s\n";
+    readFile (c);
+    sortSbyName(c);
+    vargProt(c, vargL, protL);
+    sortStud(c, pasirinkimas, vargL, protL);
+    cout << "Elapsed time(whole program, first strategy) with list: " << t.elapsed() << " s\n";
+    c.clear();
+    protL.clear();
+    vargL.clear();
+    t.reset();
+
 
 
     return 0;
