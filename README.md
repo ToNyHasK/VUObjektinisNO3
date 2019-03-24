@@ -1,4 +1,4 @@
-# VUObjektinisNO2
+﻿# VUObjektinisNO2
 
 ## Programos tikslas
 
@@ -10,6 +10,25 @@
 - `cd VUObjektinisNO2`
 
 ## Versijų istorija (changelog)
+
+### [v0.5.2](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5.2) - (2019-03-24)
+
+**Pridėta**
+
+- Sort funkcija
+- read from file funkcija
+
+**Pataisyta**
+
+- Pakeisti vektoriai
+- Programa veikia, kaip nurodyta užduotyje
+
+**Naujausi laikai**
+
+- Elapsed time(whole program) with vector: 4.94198 s
+- Elapsed time(whole program) with deque: 4.76531 s
+- Elapsed time(whole program) with list: 4.15433 s
+
 
 ### [v0.5.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5.1) - (2019-03-17)
 
