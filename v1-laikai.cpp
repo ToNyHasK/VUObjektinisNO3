@@ -60,6 +60,34 @@ int main() {
     t.reset();
 
 
+   //Antroji strategija
+
+    readFile (index, a);
+    sortSbyName(a);
+    vargProt(a, protV);
+    sortStud(a, pasirinkimas, protV);
+    cout << "Elapsed time(whole program, second strategy) with vector: " << t.elapsed() << " s\n";
+    a.clear();
+    protV.clear();
+
+    t.reset();
+    readFile (index, b);
+    sortSbyName(b);
+    vargProt(b, protD);
+    sortStud(b, pasirinkimas, protD);
+    cout << "Elapsed time(whole program, second strategy) with deque: " << t.elapsed() << " s\n";
+    b.clear();
+    protD.clear();
+
+    t.reset();
+    readFile (c);
+    sortSbyName(c);
+    vargProt(c, protL);
+    sortStud(c, pasirinkimas, protL);
+    cout << "Elapsed time(whole program, second strategy) with list: " << t.elapsed() << " s\n";
+    c.clear();
+    protL.clear();
+    t.reset();
 
     return 0;
 }

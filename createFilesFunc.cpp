@@ -217,8 +217,6 @@ void createFiles(list<studentas> s, int pasirinkimas) {
 void readFile (int index, vector<studentas> &s) {
 
     string line;
-
-    int allMarks;
     string x = "studentai";
     string xB = "studentai";
     string y = ".txt";
@@ -246,7 +244,6 @@ void readFile (int index, deque<studentas> &s) {
 
     string line;
 
-    int allMarks;
     string x = "studentai";
     string xB = "studentai";
     string y = ".txt";
@@ -274,7 +271,6 @@ void readFile (list<studentas> &s) {
 
     string line;
     studentas soi;
-    int allMarks;
     string x = "studentai";
     string xB = "studentai";
     string y = ".txt";
@@ -503,6 +499,235 @@ void sortStud(list <studentas> s, int pasirinkimas, list <studentas> vargsai, li
 
     ofstream naujausias;
     naujausias.open ("protingi.txt");
+    if(pasirinkimas == 1) {
+        if (naujausias.is_open())
+        {
+            naujausias << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Vid.)\n";
+            naujausias << "\n";
+
+            for (list<studentas>::iterator it = protingi.begin(); it != protingi.end(); ++it){
+
+               naujausias << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+
+    }
+    else{
+
+       if (naujausias.is_open())
+        {
+            naujausias << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Med.)\n";
+            naujausias << "\n";
+
+            for (list<studentas>::iterator it = protingi.begin(); it != protingi.end(); ++it){
+
+                naujausias << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+    }
+    naujausias.close();
+
+}
+
+//______________________________________________________________________________________________________________________________________________________________
+
+
+
+//Second strategy
+//______________________________________________________________________________________________________________________________________________________________
+//Allocating marks
+void vargProt(vector <studentas> &s, vector <studentas> &protingi) { //Pvz paimta is http://www.cplusplus.com/reference/algorithm/stable_partition/
+                                                                    // Ir is https://www.youtube.com/watch?v=kf67rbbR6nk
+   auto bound = stable_partition(s.begin(), s.end(), [&](const auto &tmp){return!(tmp.allMarks >= 5);});
+
+   protingi.insert(protingi.end(), make_move_iterator(bound), make_move_iterator(s.end()));
+   s.erase(bound, s.end());
+}
+
+void vargProt(deque <studentas> &s, deque <studentas> &protingi) { //Pvz paimta is http://www.cplusplus.com/reference/algorithm/stable_partition/
+                                                                // Ir is https://www.youtube.com/watch?v=kf67rbbR6nk
+  auto bound = stable_partition(s.begin(), s.end(), [&](const auto &tmp){return!(tmp.allMarks >= 5);});
+
+   protingi.insert(protingi.end(), make_move_iterator(bound), make_move_iterator(s.end()));
+   s.erase(bound, s.end());
+}
+
+void vargProt(list <studentas> &s, list <studentas> &protingi) {
+
+    for (list<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+        if ((*it).allMarks >= 5){
+                protingi.push_back((*it));
+                s.erase(it);
+        }
+    }
+}
+//______________________________________________________________________________________________________________________________________________________________
+//Sort to two files functions
+void sortStud(vector <studentas> s, int pasirinkimas, vector <studentas> protingi) {
+
+    ofstream naujas;
+    naujas.open ("vargsaiV2.txt");
+    if(pasirinkimas == 1) {
+        if (naujas.is_open())
+        {
+            naujas << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Vid.)\n";
+            naujas << "\n";
+
+            for (vector<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+                naujas << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks << "\n";
+            }
+        }
+
+    }
+
+    else{
+
+       if (naujas.is_open())
+        {
+            naujas << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Med.)\n";
+            naujas << "\n";
+
+            for (vector<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+                naujas << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+    }
+    naujas.close();
+
+    ofstream naujausias;
+    naujausias.open ("protingiV2.txt");
+    if(pasirinkimas == 1) {
+        if (naujausias.is_open())
+        {
+            naujausias << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Vid.)\n";
+            naujausias << "\n";
+
+            for (vector<studentas>::iterator it = protingi.begin(); it != protingi.end(); ++it){
+
+               naujausias << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+
+    }
+    else{
+
+       if (naujausias.is_open())
+        {
+            naujausias << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Med.)\n";
+            naujausias << "\n";
+
+            for (vector<studentas>::iterator it = protingi.begin(); it != protingi.end(); ++it){
+
+                naujausias << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+    }
+    naujausias.close();
+}
+
+void sortStud(deque <studentas> s, int pasirinkimas, deque <studentas> protingi) {
+
+    ofstream naujas;
+    naujas.open ("vargsaiV2.txt");
+    if(pasirinkimas == 1) {
+        if (naujas.is_open())
+        {
+            naujas << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Vid.)\n";
+            naujas << "\n";
+
+            for (deque<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+                naujas << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks << "\n";
+            }
+        }
+
+    }
+
+    else{
+
+       if (naujas.is_open())
+        {
+            naujas << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Med.)\n";
+            naujas << "\n";
+
+            for (deque<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+                naujas << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+    }
+    naujas.close();
+
+    ofstream naujausias;
+    naujausias.open ("protingiV2.txt");
+    if(pasirinkimas == 1) {
+        if (naujausias.is_open())
+        {
+            naujausias << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Vid.)\n";
+            naujausias << "\n";
+
+            for (deque<studentas>::iterator it = protingi.begin(); it != protingi.end(); ++it){
+
+               naujausias << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+
+    }
+    else{
+
+       if (naujausias.is_open())
+        {
+            naujausias << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Med.)\n";
+            naujausias << "\n";
+
+            for (deque<studentas>::iterator it = protingi.begin(); it != protingi.end(); ++it){
+
+                naujausias << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+    }
+    naujausias.close();
+
+}
+
+void sortStud(list <studentas> s, int pasirinkimas, list <studentas> protingi) {
+
+    ofstream naujas;
+    naujas.open ("vargsaiV2.txt");
+    if(pasirinkimas == 1) {
+        if (naujas.is_open())
+        {
+            naujas << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Vid.)\n";
+            naujas << "\n";
+
+            for (list<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+                naujas << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks << "\n";
+            }
+        }
+
+    }
+
+    else{
+
+       if (naujas.is_open())
+        {
+            naujas << "firstName"<< setw(20) <<"secondName"<< setw(20) <<"Galutinis(Med.)\n";
+            naujas << "\n";
+
+            for (list<studentas>::iterator it = s.begin(); it != s.end(); ++it){
+
+                naujas << (*it).firstName << setw(20) << (*it).secondName << setw(20) << fixed << setprecision(2) << (*it).allMarks <<"\n";
+            }
+        }
+    }
+    naujas.close();
+
+    ofstream naujausias;
+    naujausias.open ("protingiV2.txt");
     if(pasirinkimas == 1) {
         if (naujausias.is_open())
         {

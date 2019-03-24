@@ -11,6 +11,41 @@
 
 ## Versijų istorija (changelog)
 
+### [v1.0](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.0) - (2019-03-24)
+
+**Pridėta**
+
+- CMakefile
+- Antroji strategija
+
+**Laikai**
+
+	**Vidurkiu:**
+		**Pirmoji strategija:**
+			- Elapsed time(whole program, first strategy) with vector: 4.87426 s
+			- Elapsed time(whole program, first strategy) with deque: 4.97473 s
+			- Elapsed time(whole program, first strategy) with list: 4.19478 s
+		**Antroji strategija:**
+			- Elapsed time(whole program, second strategy) with vector: 4.65151 s
+			- Elapsed time(whole program, second strategy) with deque: 4.91582 s
+			- Elapsed time(whole program, second strategy) with list: 4.00226 s
+	**Mediana**
+		**Pirmoji strategija:**
+			- Elapsed time(whole program, first strategy) with vector: 4.86205 s
+			- Elapsed time(whole program, first strategy) with deque: 4.98566 s
+			- Elapsed time(whole program, first strategy) with list: 4.18285 s
+		**Antroji strategija:**
+			- Elapsed time(whole program, second strategy) with vector: 4.67467 s
+			- Elapsed time(whole program, second strategy) with deque: 4.90189 s
+			- Elapsed time(whole program, second strategy) with list: 3.95339 s
+
+**Apibendrinimas**
+
+- Vector: antroji strategija su vectoriumi veikia grečiau, labiau apsimoka naudot antrą strategiją
+- Deque: laiko kitimai minimalūs, grečiau pagal antrą strategiją
+- List: naudojant antrą strategiją listas pagreitėja
+- Overall: labiau apsimoka naudot antrą strategiją, atminties atžvilgiu ir laiko taupymu
+
 ### [v0.5.2](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5.2) - (2019-03-24)
 
 **Pridėta**
@@ -25,9 +60,9 @@
 
 **Naujausi laikai**
 
-- Elapsed time(whole program) with vector: 4.94198 s
-- Elapsed time(whole program) with deque: 4.76531 s
-- Elapsed time(whole program) with list: 4.15433 s
+- Elapsed time(whole program) with vector: 4.73548 s
+- Elapsed time(whole program) with deque: 4.94371 s
+- Elapsed time(whole program) with list: 4.13433 s
 
 
 ### [v0.5.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5.1) - (2019-03-17)
