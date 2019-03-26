@@ -1,4 +1,4 @@
-#include "createFilesFunc.cpp"
+#include "functions.h"
 
 int main() {
 

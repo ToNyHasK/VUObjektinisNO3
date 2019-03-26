@@ -1,5 +1,32 @@
 #include "header.h"
 
+void checkInput(int &input) {
+
+    while (cin.fail() || (input !=1 && input !=0)){
+            cout << "Blogas irasymas, bandykite dar karta: \n";
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin >> input;
+    }
+
+}
+
+bool mycomp(const studentas & s1, const studentas & s2) {
+    return (s1.firstName < s2.firstName);
+}
+
+void sortSbyName(vector<studentas> & s){
+    sort(s.begin(), s.end(), mycomp);
+}
+
+void sortSbyName(deque<studentas> & s){
+    sort(s.begin(), s.end(), mycomp);
+}
+
+void sortSbyName(list<studentas> & s){
+    s.sort(mycomp);
+}
+
 //First strategy
 //______________________________________________________________________________________________________________________________________________________________
 //Create file functions
