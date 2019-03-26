@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(Versija_kuria_keiciam
+add_executable(VUObjektinisNO2-1.0
         v1-laikai.cpp
         header.h
         createFilesFunc.cpp)
