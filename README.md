@@ -11,6 +11,13 @@
 
 ## Versijų istorija (changelog)
 
+
+### [v1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.1) - (2019-03-26)
+
+**Pataisyta**
+
+- v1.0 neveikia su cmake, v1.1 turėtų veikti
+
 ### [v1.0](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.0) - (2019-03-24)
 
 **Pridėta**
