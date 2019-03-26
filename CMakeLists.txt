@@ -8,4 +8,5 @@ include_directories(.)
 add_executable(VUObjektinisNO2-1.0
         v1-laikai.cpp
         header.h
+        functions.h
         createFilesFunc.cpp)
