@@ -11,6 +11,21 @@
 
 ## Versijų istorija (changelog)
 
+### [v1.1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.1.1) - (2019-04-13)
+
+**Pakeista**
+
+- Struct į class
+
+**Laikai(antroji strategija su vidurkiu)**
+
+    **Struct**
+    - Elapsed time(whole program, second strategy) with vector: 4.65151 s
+    **Class**
+    - Elapsed time(whole program, second strategy) with vector: 3.7908 s
+    - 01 flag - 2.03059 s
+    - 02 flag - 2.17917 s
+    - 03 flag - 2.08763 s
 
 ### [v1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.1) - (2019-03-26)
 
