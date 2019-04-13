@@ -6,12 +6,12 @@
 
 ## Įdiegimas (Unix kompiuteryje) 
 
-- `git clone https://github.com/ToNyHasK/VUObjektinisNO2.git`
+- `git clone https://github.com/ToNyHasK/VUObjektinisNO3.git`
 - `cd VUObjektinisNO2`
 
 ## Versijų istorija (changelog)
 
-### [v1.1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.1.1) - (2019-04-13)
+### [v1.1.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.1.1) - (2019-04-13)
 
 **Pakeista**
 
