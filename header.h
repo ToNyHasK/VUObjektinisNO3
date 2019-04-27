@@ -43,6 +43,8 @@ private:
 public:
 
     studentas() : egz(0.0), allMarks(0.0), haha(0) {nd.clear();}
+    studentas(const studentas& s) : nd(s.nd), egz(s.egz), allMarks(s.allMarks), firstName(s.firstName), secondName(s.secondName) {}
+
     // getters
     string getName() const {return firstName;}
     string getSurname() const {return secondName;}
@@ -57,6 +59,13 @@ public:
     int median();
     double galutinioM();
     double galutinioV();
-
+    // Overloading Operators
+    bool operator>(const studentas& stud);
+    bool operator>=(const studentas& stud);
+    bool operator<(const studentas& stud);
+    bool operator<=(const studentas& stud);
+    studentas& operator=(const studentas& stud);
+    bool operator==(const studentas& stud);
+    bool operator!=(const studentas& stud);
 };
 #endif

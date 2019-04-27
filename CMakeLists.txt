@@ -11,6 +11,6 @@ add_executable(Versija_kuria_keiciam
         createFilesFunc.cpp
         functions.h
         header.h
-        v1-laikai.cpp)
+        v1-laikai.cpp
         functions.h
         createFilesFunc.cpp)
