@@ -6,7 +6,7 @@
 
 ## Įdiegimas (Unix kompiuteryje) 
 
-- `git clone https://github.com/ToNyHasK/VUObjektinisNO2.git`
+- `git clone https://github.com/ToNyHasK/VUObjektinisNO3.git`
 - `cd VUObjektinisNO2`
 
 ## Versijų istorija (changelog)
