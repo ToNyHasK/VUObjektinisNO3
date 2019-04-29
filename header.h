@@ -31,27 +31,35 @@ public:
                 (chrono::high_resolution_clock::now() - start).count();
     }
 };
+class zmogus {
+protected:
+    // info about person
+    string firstName;
+    string secondName;
+public:
+   // zmogus (const zmogus& z) :  firstName(z.firstName), secondName(z.secondName) {}
+    // getters
+    virtual string getName() const {return firstName;}
+   virtual string getSurname() const {return secondName;}
+    // setters
+    virtual void setName(istream & stream) {stream >> firstName;}
+    virtual void setSurname(istream & stream) {stream >> secondName;}
 
-class studentas {
+};
+
+class studentas: public zmogus {
 private:
     vector<int> nd;
     double egz;
     double allMarks;
-    string firstName;
-    string secondName;
-    int haha;
+    int haha; // used for creating random numbers
 public:
-
     studentas() : egz(0.0), allMarks(0.0), haha(0) {nd.clear();}
-    studentas(const studentas& s) : nd(s.nd), egz(s.egz), allMarks(s.allMarks), firstName(s.firstName), secondName(s.secondName) {}
+    //studentas(const studentas &s) : nd(s.nd), egz(s.egz), allMarks(s.allMarks) {}
 
     // getters
-    string getName() const {return firstName;}
-    string getSurname() const {return secondName;}
     double getAllMarks() const {return allMarks;}
     // setters
-    void setName(istream & stream) {stream >> firstName;}
-    void setSurname(istream & stream) {stream >> secondName;}
     void setAllMarks(istream & stream) {stream >> allMarks;}
     // functions
     void randomNumbers(int haha);
