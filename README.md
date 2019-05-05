@@ -11,6 +11,13 @@
 
 ## Versijų istorija (changelog)
 
+### [v1.5](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.5) - (2019-05-05)
+
+**Pridėta**
+
+- Nauja class **zmogus** kaip base class
+- **studentas** class tapo derived 
+
 ### [v1.2.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.2.1) - (2019-05-05)
 
 **Pataisyta**

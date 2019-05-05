@@ -42,7 +42,6 @@ double studentas::galutinioM() {
 double studentas::galutinioV() {
     return 0.4 * vid() + 0.6 * egz;
 }
-// Padaryta su pagalba
 // Overloading operators
 
  bool studentas::operator>(const studentas& s) {
