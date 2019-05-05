@@ -11,26 +11,26 @@
 
 ## Versijų istorija (changelog)
 
-### [v1.5](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.5) - (2019-05-05)
+### [v1.5](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.5) - (2019-05-05)
 
 **Pridėta**
 
 - Nauja class **zmogus** kaip base class
 - **studentas** class tapo derived 
 
-### [v1.2.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.2.1) - (2019-05-05)
+### [v1.2.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2.1) - (2019-05-05)
 
 **Pataisyta**
 
 - studento class ir overloadinimas
 
-### [v1.2](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.2) - (2019-04-27)
+### [v1.2](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2) - (2019-04-27)
 
 **Pridėta**
 
 - Operatorių overloadinimas, pagal trijų taisyklę
 
-### [v1.1.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.1.1) - (2019-04-13)
+### [v1.1.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.1.1) - (2019-04-13)
 
 **Pakeista**
 
