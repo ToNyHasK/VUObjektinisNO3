@@ -11,6 +11,12 @@
 
 ## Versijų istorija (changelog)
 
+### [v1.2.1](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.2.1) - (2019-05-05)
+
+**Pataisyta**
+
+- studento class ir overloadinimas
+
 ### [v1.2](https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.2) - (2019-04-27)
 
 **Pridėta**

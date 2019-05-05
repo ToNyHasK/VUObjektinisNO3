@@ -45,13 +45,6 @@ double studentas::galutinioV() {
 // Padaryta su pagalba
 // Overloading operators
 
-studentas& studentas::operator=(const studentas& s) {
-    if (&s == this) return *this;
-   firstName = s.getName();
-   secondName = s.getSurname();
-   allMarks = s.getAllMarks();
-   return *this;
-}
  bool studentas::operator>(const studentas& s) {
     return allMarks > s.getAllMarks();
 }
