@@ -1,4 +1,4 @@
-﻿# VUObjektinisNO2
+﻿# VUObjektinisNO3
 
 ## Programos tikslas
 
@@ -7,9 +7,15 @@
 ## Įdiegimas (Unix kompiuteryje) 
 
 - `git clone https://github.com/ToNyHasK/VUObjektinisNO3.git`
-- `cd VUObjektinisNO2`
+- `cd VUObjektinisNO3`
 
 ## Versijų istorija (changelog)
+
+### [v1.5.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.5.1) - (2019-05-09)
+
+**Pataisyta**
+
+- Konstruktoriai
 
 ### [v1.5](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.5) - (2019-05-05)
 
@@ -17,6 +23,12 @@
 
 - Nauja class **zmogus** kaip base class
 - **studentas** class tapo derived 
+
+### [v1.2.2](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2.2) - (2019-05-09)
+
+**Pataisyta**
+
+- Konstruktoriai
 
 ### [v1.2.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2.1) - (2019-05-05)
 

@@ -42,8 +42,16 @@ double studentas::galutinioM() {
 double studentas::galutinioV() {
     return 0.4 * vid() + 0.6 * egz;
 }
+// Padaryta su pagalba
 // Overloading operators
 
+studentas& studentas::operator=(const studentas& s) {
+    if (&s == this) return *this;
+   firstName = s.getName();
+   secondName = s.getSurname();
+   allMarks = s.getAllMarks();
+   return *this;
+}
  bool studentas::operator>(const studentas& s) {
     return allMarks > s.getAllMarks();
 }
