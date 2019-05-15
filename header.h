@@ -35,7 +35,6 @@ public:
 //Base abstract class
 class zmogus {
 protected:
-    // info about person
     string firstName;
     string secondName;
     zmogus (const string inpName, const string inpSName ) : firstName(inpName), secondName(inpSName) {}
@@ -61,8 +60,10 @@ public:
     ~studentas() {nd.clear();}
     // getters
     double getAllMarks() const {return allMarks;}
+    double getEgz() const {return egz;}
     // setters
     void setAllMarks(istream & stream) {stream >> allMarks;}
+    void setEgz (istream& stream) {stream >> egz;}
     // functions
     void randomNumbers(int haha);
     double vid();

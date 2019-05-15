@@ -2,7 +2,11 @@
 
 ## Programos tikslas
 
-- Pagal nuskaitytus arba įvestus studentų duomenis (namų darbų pažymius(vidurkį/medianą) ir egzamino rezultatus) suskaičiuoti **galutinius**, naudojant formulę (galutinis = 0.4 * vidurkis + 0.6 * egzaminas) 
+- **class** ir **struct** greičio palyginimas
+- Greičio skaičiavimui naudojama 10000 ir 100000 studentų, kurie nuskaitomi iš dviejų failų
+- Studentai skirstomi dar į du atskirus failus, pagal jų pažymius
+- Saugus interface
+- Google test
 
 ## Įdiegimas (Unix kompiuteryje) 
 
@@ -10,6 +14,19 @@
 - `cd VUObjektinisNO3`
 
 ## Versijų istorija (changelog)
+
+### [v1.2](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2) - (2019-05-15)
+
+**Pridėta**
+
+- **Doxygen** dokumentacija
+- **Unit tests**: naudojama googletest-release-1.8.1
+- Testuojami: visi pažymiai(allMarks), vardas(firstName) ir pavardė(secondName), ir egzamino pažymiai(egz)
+- Visi testai teigiami
+
+**Pataisyta**
+
+- Cmakelist, kad veiktų su google test
 
 ### [v1.5.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.5.1) - (2019-05-09)
 
@@ -23,6 +40,7 @@
 
 - Nauja class **zmogus** kaip base class
 - **studentas** class tapo derived 
+- **Rule of 5**
 
 ### [v1.2.2](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2.2) - (2019-05-09)
 
@@ -40,7 +58,8 @@
 
 **Pridėta**
 
-- Operatorių overloadinimas, pagal trijų taisyklę
+- Operatorių overloadinimas
+- **Rule of 3**
 
 ### [v1.1.1](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.1.1) - (2019-04-13)
 

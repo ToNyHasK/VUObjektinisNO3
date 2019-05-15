@@ -1,0 +1,295 @@
+\subsection*{Programos tikslas}
+
+
+\begin{DoxyItemize}
+\item Pagal nuskaitytus arba įvestus studentų duomenis (namų darbų pažymius(vidurkį/medianą) ir egzamino rezultatus) suskaičiuoti {\bfseries{galutinius}}, naudojant formulę (galutinis = 0.\+4 $\ast$ vidurkis + 0.\+6 $\ast$ egzaminas)
+\end{DoxyItemize}
+
+\subsection*{Įdiegimas (Unix kompiuteryje)}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily git clone \href{https://github.com/ToNyHasK/VUObjektinisNO3.git}{\texttt{ https\+://github.\+com/\+To\+Ny\+Has\+K/\+V\+U\+Objektinis\+N\+O3.\+git}}}
+\item {\ttfamily cd V\+U\+Objektinis\+N\+O3}
+\end{DoxyItemize}
+
+\subsection*{Versijų istorija (changelog)}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.5.1}{\texttt{ v1.\+5.\+1}} -\/ (2019-\/05-\/09)}
+
+{\bfseries{Pataisyta}}
+
+
+\begin{DoxyItemize}
+\item Konstruktoriai
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.5}{\texttt{ v1.\+5}} -\/ (2019-\/05-\/05)}
+
+{\bfseries{Pridėta}}
+
+
+\begin{DoxyItemize}
+\item Nauja class {\bfseries{zmogus}} kaip base class
+\item {\bfseries{studentas}} class tapo derived
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2.2}{\texttt{ v1.\+2.\+2}} -\/ (2019-\/05-\/09)}
+
+{\bfseries{Pataisyta}}
+
+
+\begin{DoxyItemize}
+\item Konstruktoriai
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2.1}{\texttt{ v1.\+2.\+1}} -\/ (2019-\/05-\/05)}
+
+{\bfseries{Pataisyta}}
+
+
+\begin{DoxyItemize}
+\item studento class ir overloadinimas
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2}{\texttt{ v1.\+2}} -\/ (2019-\/04-\/27)}
+
+{\bfseries{Pridėta}}
+
+
+\begin{DoxyItemize}
+\item Operatorių overloadinimas, pagal trijų taisyklę
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.1.1}{\texttt{ v1.\+1.\+1}} -\/ (2019-\/04-\/13)}
+
+{\bfseries{Pakeista}}
+
+
+\begin{DoxyItemize}
+\item Struct į class
+\end{DoxyItemize}
+
+{\bfseries{Laikai(antroji strategija su vidurkiu)}} \begin{DoxyVerb}**Struct**
+- Elapsed time(whole program, second strategy) with vector: 4.65151 s
+**Class**
+- Elapsed time(whole program, second strategy) with vector: 3.7908 s
+- 01 flag - 2.03059 s
+- 02 flag - 2.17917 s
+- 03 flag - 2.08763 s
+\end{DoxyVerb}
+
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.1}{\texttt{ v1.\+1}} -\/ (2019-\/03-\/26)}
+
+{\bfseries{Pataisyta}}
+
+
+\begin{DoxyItemize}
+\item v1.\+0 neveikia su cmake, v1.\+1 turėtų veikti
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v1.0}{\texttt{ v1.\+0}} -\/ (2019-\/03-\/24)}
+
+{\bfseries{Pridėta}}
+
+
+\begin{DoxyItemize}
+\item C\+Makefile
+\item Antroji strategija
+\end{DoxyItemize}
+
+{\bfseries{Laikai}} \begin{DoxyVerb}**Vidurkiu:**
+    **Pirmoji strategija:**
+        - Elapsed time(whole program, first strategy) with vector: 4.87426 s
+        - Elapsed time(whole program, first strategy) with deque: 4.97473 s
+        - Elapsed time(whole program, first strategy) with list: 4.19478 s
+    **Antroji strategija:**
+        - Elapsed time(whole program, second strategy) with vector: 4.65151 s
+        - Elapsed time(whole program, second strategy) with deque: 4.91582 s
+        - Elapsed time(whole program, second strategy) with list: 4.00226 s
+**Mediana**
+    **Pirmoji strategija:**
+        - Elapsed time(whole program, first strategy) with vector: 4.86205 s
+        - Elapsed time(whole program, first strategy) with deque: 4.98566 s
+        - Elapsed time(whole program, first strategy) with list: 4.18285 s
+    **Antroji strategija:**
+        - Elapsed time(whole program, second strategy) with vector: 4.67467 s
+        - Elapsed time(whole program, second strategy) with deque: 4.90189 s
+        - Elapsed time(whole program, second strategy) with list: 3.95339 s
+\end{DoxyVerb}
+
+
+{\bfseries{Apibendrinimas}}
+
+
+\begin{DoxyItemize}
+\item Vector\+: antroji strategija su vectoriumi veikia grečiau, labiau apsimoka naudot antrą strategiją
+\item Deque\+: laiko kitimai minimalūs, grečiau pagal antrą strategiją
+\item List\+: naudojant antrą strategiją listas pagreitėja
+\item Overall\+: labiau apsimoka naudot antrą strategiją, atminties atžvilgiu ir laiko taupymu
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5.2}{\texttt{ v0.\+5.\+2}} -\/ (2019-\/03-\/24)}
+
+{\bfseries{Pridėta}}
+
+
+\begin{DoxyItemize}
+\item Sort funkcija
+\item read from file funkcija
+\end{DoxyItemize}
+
+{\bfseries{Pataisyta}}
+
+
+\begin{DoxyItemize}
+\item Pakeisti vektoriai
+\item Programa veikia, kaip nurodyta užduotyje
+\end{DoxyItemize}
+
+{\bfseries{Naujausi laikai}}
+
+
+\begin{DoxyItemize}
+\item Elapsed time(whole program) with vector\+: 4.\+73548 s
+\item Elapsed time(whole program) with deque\+: 4.\+94371 s
+\item Elapsed time(whole program) with list\+: 4.\+13433 s
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5.1}{\texttt{ v0.\+5.\+1}} -\/ (2019-\/03-\/17)}
+
+{\bfseries{Pataisyta}}
+
+
+\begin{DoxyItemize}
+\item Programa automatiškai apskaičiuoja laikus su skirtingais konteineriais $\ast$$\ast$(vector, deque, list)$\ast$$\ast$
+\item Greičiau veikianti programos versija
+\end{DoxyItemize}
+
+{\bfseries{Nauji laikai}}
+
+
+\begin{DoxyItemize}
+\item Elapsed time(whole program) with vector\+: 4.\+1619 s
+\item Elapsed time(whole program) with deque\+: 4.\+66848 s
+\item Elapsed time(whole program) with list\+: 4.\+72436 s
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.5}{\texttt{ v0.\+5}} -\/ (2019-\/03-\/12)}
+
+{\bfseries{Apie}}
+
+
+\begin{DoxyItemize}
+\item Apskaičiuoti programos veikimo laiką naudojant skirtingus konteinerius
+\end{DoxyItemize}
+
+{\bfseries{Laikai}}
+
+
+\begin{DoxyItemize}
+\item Su {\bfseries{vector}}\+: 6.\+97499 s
+\item Su {\bfseries{deque}}\+: 6.\+658 s
+\item Su {\bfseries{list}}\+: 5.\+58647 s
+\end{DoxyItemize}
+
+{\bfseries{Pakeista}}
+
+
+\begin{DoxyItemize}
+\item Ikelta versija yra su {\bfseries{link}} ir {\bfseries{iteratoriais}}
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.4}{\texttt{ v0.\+4}} -\/ (2019-\/03-\/01)}
+
+{\bfseries{Apie}}
+
+
+\begin{DoxyItemize}
+\item Generuojami penki failai, su {\bfseries{random}} sugeneruotais studentų balais
+\item Sukuriami dar du failai (viename faile sudedami pažymiai $>$5, kitame $<$5)
+\item Taip pat skaiciuojamas programos veikimo laikas ir kiekvieno failo sukūrimo laikas
+\end{DoxyItemize}
+
+{\bfseries{Laikai}}
+
+
+\begin{DoxyItemize}
+\item Pirmo failo\+: 0.\+000681 s
+\item Antro failo\+: 0.\+00798 s
+\item Trečio failo\+: 0.\+032946 s
+\item Ketvirto failo\+: 0.\+249309 s
+\item Penkto failo\+: 2.\+82796 s
+\item Visos programos\+: 6.\+97499 s
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.3}{\texttt{ v0.\+3}} -\/ (2019-\/02-\/22)}
+
+{\itshape {\bfseries{Pridėta}}}
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Headers}} files
+\end{DoxyItemize}
+
+{\bfseries{Koreguota}}
+
+
+\begin{DoxyItemize}
+\item Didzioji dalis funkcijų perkelta į headers failus
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.2.2}{\texttt{ v0.\+2.\+2}} -\/ (2019-\/02-\/19)}
+
+{\bfseries{Koreguota}}
+
+
+\begin{DoxyItemize}
+\item Atnaujintas {\bfseries{R\+E\+A\+D\+ME}} failas
+\item Sutaisyta {\bfseries{sort}} funkcija
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.2.1}{\texttt{ v0.\+2.\+1}} -\/ (2019-\/02-\/19)}
+
+{\itshape {\bfseries{Pridėta}}}
+
+
+\begin{DoxyItemize}
+\item Galimybė pasirinkti tarp įvedimo ir nuskaitymo iš failo
+\item {\bfseries{Sort}} funkcija
+\end{DoxyItemize}
+
+{\bfseries{Koreguota}}
+
+
+\begin{DoxyItemize}
+\item Pataisyta didžioji dalis funkcijų $\ast$$\ast$(skaitymo iš failo, išvedimo, įvedimo)$\ast$$\ast$
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.2}{\texttt{ v0.\+2}} -\/ (2019-\/02-\/18)}
+
+{\itshape {\bfseries{Pridėta}}}
+
+
+\begin{DoxyItemize}
+\item Nuskaitymas iš failo
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.1.1}{\texttt{ v0.\+1.\+1}} -\/ (2019-\/02-\/25)}
+
+{\bfseries{Koreguota}}
+
+
+\begin{DoxyItemize}
+\item Sutvarkytas kodas
+\end{DoxyItemize}
+
+\subsubsection*{\href{https://github.com/ToNyHasK/VUObjektinisNO2/releases/tag/v0.1}{\texttt{ v0.\+1}} -\/ (2019-\/02-\/17)}
+
+{\itshape {\bfseries{Pridėta}}}
+
+
+\begin{DoxyItemize}
+\item Pirminė programos versija 
+\end{DoxyItemize}

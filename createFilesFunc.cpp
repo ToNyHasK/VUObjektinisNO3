@@ -50,6 +50,7 @@ studentas& studentas::operator=(const studentas& s) {
     nd.clear();
     firstName = s.getName();
     secondName = s.getSurname();
+    egz = s.getEgz();
     allMarks = s.getAllMarks();
     return *this;
 }
