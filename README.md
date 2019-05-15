@@ -15,7 +15,7 @@
 
 ## Versijų istorija (changelog)
 
-### [v1.2](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2) - (2019-05-15)
+### [2.0](https://github.com/ToNyHasK/VUObjektinisNO3/releases/tag/v1.2) - (2019-05-15)
 
 **Pridėta**
 
